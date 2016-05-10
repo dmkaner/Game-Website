@@ -1,0 +1,135 @@
+<template name="home">
+  <body>
+
+    <section class="text-header">
+			<div class="row">
+				<div class="col-lg-6">
+		        <a href="#search"><i class="hovicon effect-3 sub-b"><i class="fa fa-search"></i> Search Games</i></a>
+				</div>
+				<div class="col-lg-6">
+		        <i class="hovicon effect-3 sub-b"><i class="fa fa-arrow-down"></i> Popular Games</i>
+				</div>
+			</div>
+		</section>
+
+    <div id="wrapper">
+  	   <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+  	      <ul class="nav sidebar-nav">
+  	         <li class="sidebar-brand">
+  	            <a href="#">Gamers Mates</a>
+  	         </li>
+  	         <li>
+  	            <a href="#">Home</a>
+             </li>
+  	         <li>
+  	            <a href="#">Create Lobby</a>
+  	         </li>
+  	         <li>
+  	            <a href="#">Help</a>
+  	         </li>
+  	      </ul>
+  	    </nav>
+  	    <div id="page-content-wrapper">
+  	       <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+  	          <span class="hamb-top"></span>
+  	    			<span class="hamb-middle"></span>
+  					  <span class="hamb-bottom"></span>
+  	       </button>
+  	    </div>
+  	</div>
+
+    <section>
+  		<div id="search">
+  		    <button type="button" class="close">×</button>
+  		    <form>
+              {{> leaderboard}}
+  		    </form>
+  		</div>
+  	</section>
+
+    {{#each gameTabs}}
+      {{> popularGames}}
+    {{/each}}
+
+    <script>
+      $(function () {
+          $('a[href="#search"]').on('click', function(event) {
+              event.preventDefault();
+              $('#search').addClass('open');
+              $('#search > form > input[type="search"]').focus();
+          });
+
+          $('#search, #search button.close').on('click keyup', function(event) {
+              if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                  $(this).removeClass('open');
+              }
+          });
+
+
+          //Do not include! This prevents the form from submitting for DEMO purposes only!
+          $('form').submit(function(event) {
+              event.preventDefault();
+              return false;
+          })
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+           isClosed = false;
+
+          trigger.click(function () {
+            hamburger_cross();
+          });
+
+          function hamburger_cross() {
+
+            if (isClosed == true) {
+              overlay.hide();
+              trigger.removeClass('is-open');
+              trigger.addClass('is-closed');
+              isClosed = false;
+            } else {
+              overlay.show();
+              trigger.removeClass('is-closed');
+              trigger.addClass('is-open');
+              isClosed = true;
+            }
+        }
+
+        $('[data-toggle="offcanvas"]').click(function () {
+              $('#wrapper').toggleClass('toggled');
+        });
+      });
+    </script>
+
+  </body>
+</template>
+
+<template name="leaderboard">
+  {{> EasySearch.Input index=index attributes=inputAttributes }}
+
+  {{#EasySearch.IfInputEmpty index=index }}
+    <style>
+      .easy-search-input {
+        top: 50%;
+      }
+    </style>
+  {{else}}
+    <ol class="leaderboard">
+      {{#EasySearch.Each index=index }}
+        {{> searchGames}}
+      {{/EasySearch.Each}}
+    </ol>
+  {{/EasySearch.IfInputEmpty}}
+</template>
+
+<template name="searchGames">
+  {{{code}}}
+</template>
+
+<template name="popularGames">
+  {{{code}}}
+</template>
