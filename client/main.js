@@ -1,6 +1,8 @@
 Games = new Mongo.Collection("games");
 Lobby = new Mongo.Collection("lobby");
 
+
+
 LobbySchema = new SimpleSchema({
   game: {
     type: String,
@@ -69,6 +71,7 @@ GamesIndex = new EasySearch.Index({
 });
 
 Meteor.subscribe("games");
+Meteor.subscribe("lobby");
 
 Meteor.methods({
   updateScore: function (playerId) {

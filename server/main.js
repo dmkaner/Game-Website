@@ -1,6 +1,12 @@
 Games = new Mongo.Collection("games");
 Lobby = new Mongo.Collection("lobby");
 
+Lobby.allow({
+  'insert': function (userId,doc) {
+    return true;
+  }
+});
+
 Games.allow({
   'insert': function (userId,doc) {
     return true;
@@ -37,6 +43,10 @@ GamesIndex = new EasySearch.Index({
 
 Meteor.publish("games", function(){
   return Games.find();
+});
+
+Meteor.publish("lobby", function(){
+  return Lobby.find();
 });
 
 // Meteor.startup(function () {
