@@ -1,4 +1,5 @@
 Games = new Mongo.Collection("games");
+Lobby = new Mongo.Collection("lobby");
 
 Games.allow({
   'insert': function (userId,doc) {

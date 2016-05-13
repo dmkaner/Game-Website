@@ -24,3 +24,5 @@ easy:search
 easysearch:elasticsearch
 easysearch:autosuggest
 fortawesome:fontawesome
+aldeed:autoform
+aldeed:collection2

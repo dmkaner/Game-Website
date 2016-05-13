@@ -1,4 +1,44 @@
 Games = new Mongo.Collection("games");
+Lobby = new Mongo.Collection("lobby");
+
+LobbySchema = new SimpleSchema({
+  game: {
+    type: String,
+    label: "Game"
+  },
+  console: {
+    type: String,
+    label: "Console"
+  },
+  players: {
+    type: Number,
+    label: "Players"
+  },
+  mic: {
+    type: Boolean,
+    label: "Mic"
+  },
+  note: {
+    type: String,
+    label: "Note"
+  },
+  gamertag: {
+    type: String,
+    label: "Gamertag"
+  },
+  createdAt: {
+    type: Date,
+    label: "Created At",
+    autoValue: function(){
+      return new Date()
+    },
+    autoform: {
+      type: "hidden"
+    }
+  }
+});
+
+Lobby.attachSchema( LobbySchema );
 
 GamesIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
