@@ -1,8 +1,6 @@
 Games = new Mongo.Collection("games");
 Lobby = new Mongo.Collection("lobby");
 
-
-
 LobbySchema = new SimpleSchema({
   game: {
     type: String,
@@ -73,53 +71,46 @@ GamesIndex = new EasySearch.Index({
 Meteor.subscribe("games");
 Meteor.subscribe("lobby");
 
-Meteor.methods({
-  updateScore: function (playerId) {
-    check(playerId, String);
-    Games.update(playerId, { $inc: { score: 5 }});
+Template.leaderboard.helpers({
+  inputAttributes: function () {
+    return { 'class': 'easy-search-input', 'placeholder': 'Start searching...' };
+  },
+  players: function () {
+    return Games.find({}, { sort: { score: -1, name: 1 } });
+  },
+  selectedName: function () {
+    var game = GamesIndex.config.mongoCollection.findOne({ __originalId: Session.get("selectedPlayer") });
+    return game && game.title;
+  },
+  index: function () {
+    return GamesIndex;
+  },
+  resultsCount: function () {
+    return GamesIndex.getComponentDict().get('count');
+  },
+  showMore: function () {
+    return false;
+  },
+  renderTmpl: () => Template.renderTemplate
+});
+
+Template.leaderboard.events({
+  'click .inc': function () {
+    Meteor.call('updateScore', Session.get("selectedPlayer"));
+  },
+  'change .category-filter': function (e) {
+    GamesIndex.getComponentMethods()
+      .addProps('categoryFilter', $(e.target).val())
+    ;
   }
 });
 
-  Template.leaderboard.helpers({
-    inputAttributes: function () {
-      return { 'class': 'easy-search-input', 'placeholder': 'Start searching...' };
-    },
-    players: function () {
-      return Games.find({}, { sort: { score: -1, name: 1 } });
-    },
-    selectedName: function () {
-      var game = GamesIndex.config.mongoCollection.findOne({ __originalId: Session.get("selectedPlayer") });
-      return game && game.title;
-    },
-    index: function () {
-      return GamesIndex;
-    },
-    resultsCount: function () {
-      return GamesIndex.getComponentDict().get('count');
-    },
-    showMore: function () {
-      return false;
-    },
-    renderTmpl: () => Template.renderTemplate
-  });
+Tracker.autorun(() => {
+  console.log(GamesIndex.search('Barack', { limit: 20 }).fetch());
+});
 
-  Template.leaderboard.events({
-    'click .inc': function () {
-      Meteor.call('updateScore', Session.get("selectedPlayer"));
-    },
-    'change .category-filter': function (e) {
-      GamesIndex.getComponentMethods()
-        .addProps('categoryFilter', $(e.target).val())
-      ;
-    }
-  });
-
-  Tracker.autorun(() => {
-    console.log(GamesIndex.search('Barack', { limit: 20 }).fetch());
-  });
-
-  Template.home.helpers({
-    gameTabs: function(){
-        return Games.find();
-    }
-  });
+Template.home.helpers({
+  gameTabs: function(){
+      return Games.find();
+  }
+});
