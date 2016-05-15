@@ -1,12 +1,59 @@
 <template name="createLobby">
   <body>
-    <!-- <h1>Create Lobby</h1>
-    {{> quickForm collection="Lobby" id="insertLobbyForm" type="insert" class="newLobbyForm"}} -->
+    <section class="text-header">
+			<div class="row">
+				<div class="col-lg-6">
+		        <a href="#search"><i class="hovicon effect-3 sub-b"><i class="fa fa-search"></i> Search Games</i></a>
+				</div>
+				<div class="col-lg-6">
+		        <i class="hovicon effect-3 sub-b"><i class="fa fa-arrow-down"></i> Popular Games</i>
+				</div>
+			</div>
+		</section>
 
-    {{> insertLobbyForm}}
+    <section>
+  		<div id="search">
+  		    <button type="button" class="close">×</button>
+  		    <form>
+              {{> leaderboard}}
+  		    </form>
+  		</div>
+  	</section>
 
+    <h1>Create Lobby</h1>
+    {{> quickForm collection="Lobby" id="insertLobbyForm" type="insert" class="newLobbyForm"}}
+
+    <script>
+      $(function () {
+          $('a[href="#search"]').on('click', function(event) {
+              event.preventDefault();
+              $('#search').addClass('open');
+              $('#search > form > input[type="search"]').focus();
+          });
+
+          $('#search, #search button.close').on('click keyup', function(event) {
+              if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                  $(this).removeClass('open');
+              }
+          });
+
+
+          //Do not include! This prevents the form from submitting for DEMO purposes only!
+          $('form').submit(function(event) {
+              event.preventDefault();
+              return false;
+          })
+      });
+    </script>
   </body>
+
 </template>
+
+
+
+
+
+
 
 <template name="pickGame">
 </template>
