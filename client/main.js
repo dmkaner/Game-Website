@@ -4,7 +4,13 @@ Lobby = new Mongo.Collection("lobby");
 LobbySchema = new SimpleSchema({
   game: {
     type: String,
-    label: "Game"
+    label: "Game",
+    autoValue: function(){
+      return "dylan";
+    },
+    autoform: {
+      type: "hidden"
+    }
   },
   console: {
     type: String,
@@ -114,3 +120,5 @@ Template.home.helpers({
       return Games.find();
   }
 });
+
+AutoForm.debug();

@@ -21,7 +21,7 @@
   	</section>
 
     <h1>Create Lobby</h1>
-    {{> quickForm collection="Lobby" id="insertLobbyForm" type="insert" class="newLobbyForm"}}
+    {{> quickForm collection="Lobby" id="insertLobbyForm" type="insert"}}
 
     <script>
       $(function () {
@@ -74,16 +74,5 @@
 </template>
 
 <template name="insertLobbyForm">
-  {{#autoForm collection="Lobby" id="insertLobbyForm" type="insert"}}
-    <fieldset>
-      <legend>Make a lobby</legend>
-      {{> afQuickField name='game'}}
-      {{> afQuickField name='console'}}
-      {{> afQuickField name='players'}}
-      {{> afQuickField name='mic'}}
-      {{> afQuickField name='note' rows=6}}
-      {{> afQuickField name='gamertag'}}
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Insert</button>
-  {{/autoForm}}
+
 </template>
