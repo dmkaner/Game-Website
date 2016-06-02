@@ -21,7 +21,7 @@
   	</section>
 
     <h1>Create Lobby</h1>
-    {{> quickForm collection="Lobby" id="insertLobbyForm" type="insert"}}
+    {{> quickForm collection="CreateLobby" id="insertLobbyForm" type="insert"}}
 
     <script>
       $(function () {
@@ -36,43 +36,8 @@
                   $(this).removeClass('open');
               }
           });
-
-
-          //Do not include! This prevents the form from submitting for DEMO purposes only!
-          $('form').submit(function(event) {
-              event.preventDefault();
-              return false;
-          })
       });
     </script>
   </body>
-
-</template>
-
-
-
-
-
-
-
-<template name="pickGame">
-</template>
-
-<template name="pickConsole">
-</template>
-
-<template name="pickPlayers">
-</template>
-
-<template name="pickMic">
-</template>
-
-<template name="pickNote">
-</template>
-
-<template name="pickGamertag">
-</template>
-
-<template name="insertLobbyForm">
 
 </template>

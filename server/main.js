@@ -1,7 +1,7 @@
 Games = new Mongo.Collection("games");
-Lobby = new Mongo.Collection("lobby");
+CreateLobby = new Mongo.Collection("createlobby");
 
-Lobby.allow({
+CreateLobby.allow({
   'insert': function (userId,doc) {
     return true;
   }
@@ -45,37 +45,6 @@ Meteor.publish("games", function(){
   return Games.find();
 });
 
-Meteor.publish("lobby", function(){
-  return Lobby.find();
+Meteor.publish("createlobby", function(){
+  return CreateLobby.find();
 });
-
-// Meteor.startup(function () {
-//   Games.insert({
-//     title: "Fallout 4",
-//     background: "/images/gameArt/fallout4.jpg"
-//   });
-//   Games.insert({
-//     title: "Skyrim",
-//     background: "/images/skyrim.jpg"
-//   });
-//   Games.insert({
-//     title: "Minecraft",
-//     background: "/images/minecraft.jpg"
-//   });
-//   Games.insert({
-//     title: "Doom",
-//     background: "/images/doom.jpg"
-//   });
-//   Games.insert({
-//     title: "Battlefield 1",
-//     background: "/images/battefield1.jpg"
-//   });
-// });
-
-// Meteor.startup(function(){
-//     db.games.insert({
-//       title: "Minecraft",
-//       background: "/images/minecraft.jpg",
-//       code: "<div id=\"gameBackround\" class=\"col-lg-2 popular-games view view-first\" style=\"background-image:url( /images/gameArt/minecraft.jpg )\"> <div class=\"mask\"> <h2>Minecraft</h2> <p>Amount of groups playing this title now: 11,075</p> <a href=\"#\" class=\"info\">Join Lobby</a> </div> </div> <style>  </style>"
-//     })
-// });

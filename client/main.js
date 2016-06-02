@@ -1,16 +1,14 @@
 Games = new Mongo.Collection("games");
-Lobby = new Mongo.Collection("lobby");
+CreateLobby = new Mongo.Collection("createlobby");
 
-LobbySchema = new SimpleSchema({
+CreateLobbySchema = new SimpleSchema({
   game: {
     type: String,
     label: "Game",
     autoValue: function(){
       return "dylan";
     },
-    autoform: {
-      type: "hidden"
-    }
+    label: "Game"
   },
   console: {
     type: String,
@@ -31,20 +29,10 @@ LobbySchema = new SimpleSchema({
   gamertag: {
     type: String,
     label: "Gamertag"
-  },
-  createdAt: {
-    type: Date,
-    label: "Created At",
-    autoValue: function(){
-      return new Date()
-    },
-    autoform: {
-      type: "hidden"
-    }
   }
 });
 
-Lobby.attachSchema( LobbySchema );
+CreateLobby.attachSchema( CreateLobbySchema );
 
 GamesIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
@@ -75,7 +63,7 @@ GamesIndex = new EasySearch.Index({
 });
 
 Meteor.subscribe("games");
-Meteor.subscribe("lobby");
+Meteor.subscribe("createlobby");
 
 Template.leaderboard.helpers({
   inputAttributes: function () {
@@ -120,5 +108,3 @@ Template.home.helpers({
       return Games.find();
   }
 });
-
-AutoForm.debug();
