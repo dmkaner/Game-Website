@@ -1,3 +1,5 @@
+import "./templates/home.html"
+
 Games = new Mongo.Collection("games");
 CreateLobby = new Mongo.Collection("createlobby");
 
@@ -6,13 +8,28 @@ CreateLobbySchema = new SimpleSchema({
     type: String,
     label: "Game",
     autoValue: function(){
-      return "dylan";
+      return elementText
+    },
+    autoform: {
+      type: "hidden"
     },
     label: "Game"
   },
   console: {
     type: String,
-    label: "Console"
+    autoform: {
+      type: "select",
+      options: function () {
+        return [
+          {label: "Xbox 360", value: "Xbox 360"},
+          {label: "PS3", value: "PS3"},
+          {label: "Xbox 1", value: "Xbox 1"},
+          {label: "PS4", value: "PS4"},
+          {label: "PC: Steam", value: "PC: Steam"},
+          {label: "PC: Origin", value: "PC: Steam"}
+        ];
+      }
+    }
   },
   players: {
     type: Number,

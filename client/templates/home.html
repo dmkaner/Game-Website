@@ -73,9 +73,13 @@
           })
       });
 
+      var elementText;
+
       function getElementText(elementID){
-        var elementText = document.getElementById(elementID).innerHTML;
+        elementText = document.getElementById(elementID).innerHTML;
         console.log(elementText);
+        BlazeLayout.render('createLobby');
+        return elementText;
       }
     </script>
 
