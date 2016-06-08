@@ -1,0 +1,21 @@
+<template name="joinLobby">
+  <div class="page">
+    <div class="totalLobby col-centered">
+      {{#each lobbyTabs}}
+        {{> lobbyTab}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="lobbyTab">
+  <div class="indiLobby">
+    <span>{{{game}}}</span> |
+    <span>{{{console}}}</span> |
+    <span>{{{players}}} Players</span> |
+    <span>MIC: {{{mic}}}</span> |
+    <span>{{{note}}}</span>
+    <button class="joinLobbyBtn">Join</button>
+    <hr>
+  </div>
+</template>

@@ -167,3 +167,9 @@ Template.LoginModal.events({
     Session.set('nav-toggle', '');
   }
 });
+
+Template.joinLobby.helpers({
+  lobbyTabs: function(){
+    return CreateLobby.find();
+  }
+});

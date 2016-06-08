@@ -873,3 +873,25 @@ body{
   float: none;
   margin: 0 auto;
 }
+
+.indiLobby{
+  padding: 10px 10px 10px 10px;
+}
+
+.totalLobby{
+  width: 70%;
+  height: 700px;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+
+hr {
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+}
+
+.joinLobbyBtn {
+  float: right;
+}
