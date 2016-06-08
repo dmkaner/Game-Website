@@ -28,4 +28,10 @@ aldeed:autoform
 aldeed:collection2
 meteortoys:allthings
 
+accounts-base
+accounts-password
+useraccounts:unstyled
+raix:handlebar-helpers
+fourseven:scss
+
 # Test Stuff

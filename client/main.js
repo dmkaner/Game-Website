@@ -12,11 +12,11 @@ CreateLobbySchema = new SimpleSchema({
     },
     autoform: {
       type: "hidden"
-    },
-    label: "Game"
+    }
   },
   console: {
     type: String,
+    label: "Console",
     autoform: {
       type: "select",
       options: function () {
@@ -32,20 +32,46 @@ CreateLobbySchema = new SimpleSchema({
     }
   },
   players: {
-    type: Number,
-    label: "Players"
+    type: String,
+    label: "Players",
+    autoform: {
+      type: "select",
+      options: function () {
+        return [
+          {label: "Two Player", value: 2},
+          {label: "Three Player", value: 3},
+          {label: "Four Player", value: 4},
+        ];
+      }
+    }
   },
   mic: {
-    type: Boolean,
-    label: "Mic"
+    type: String,
+    label: "Mic",
+    autoform: {
+      afFieldInput: {
+        type: "boolean-select"
+      }
+    }
   },
   note: {
     type: String,
-    label: "Note"
+    label: "Note",
+    autoform: {
+      afFieldInput: {
+        type: "textarea"
+      }
+    }
   },
-  gamertag: {
+  profile: {
     type: String,
-    label: "Gamertag"
+    label: "Profile",
+    autoValue: function(){
+      return this.userId
+    },
+    autoform: {
+      type: "hidden"
+    }
   }
 });
 
@@ -123,5 +149,21 @@ Tracker.autorun(() => {
 Template.home.helpers({
   gameTabs: function(){
       return Games.find();
+  }
+});
+
+Template.landing.events({
+  'click .login-toggle': ()=> {
+    Session.set('nav-toggle', 'open');
+    console.log("hello");
+  },
+  'click .logout': ()=> {
+    Meteor.logout();
+  }
+});
+
+Template.LoginModal.events({
+  'click .close-login': ()=> {
+    Session.set('nav-toggle', '');
   }
 });

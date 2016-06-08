@@ -1,0 +1,226 @@
+<template name="landing">
+  <body>
+  	<div id="home-section" class="image-bg">
+  		<div class="container">
+  			<div class="home-content padding">
+  				<img class="img-responsive" src="images/GamerProjectLogo7.png" alt="" />
+  				<h2>Never play a game without friends again.</h2>
+  				<div class="button">
+            {{#if currentUser}}
+                  <li class="logout btn btn-primary btn-animated">Log out</li>
+            {{else}}
+  					     <li class="login-toggle btn btn-primary btn-animated">Login/Sign Up</li>
+            {{/if}}
+            {{#if currentUser}}
+                 <a href="/" class="btn btn-primary btn-animated">Go There Now!</a>
+            {{else}}
+                 <a href="#whatsit" class="btn btn-primary btn-animated">Learn More</a>
+            {{/if}}
+  				</div>
+  			</div>
+  		</div>
+  	</div><!--/#home-section-->
+    {{> LoginModal}}
+    <header id="navigation">
+  		<div class="navbar" role="banner">
+  			<div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+						<img class="main-logo img-responsive" src="images/logo2.png" alt="">
+                    </a>
+
+                </div>
+                <nav id="mainmenu" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#home-section">HOME</a></li>
+                        <li><a href="#whatsit">What’s it</a></li>
+                        <li><a href="#whats-special">Special</a></li>
+                        <li><a href="#compatibility">Consoles</a></li>
+                        <li><a href="#features">Video</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header><!--/#navigation-->
+
+      <div id="whatsit" class="padding">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.10s">
+  					<img class="img-responsive" src="images/mockup/whatsit.png" alt="">
+  				</div>
+  				<div class="col-sm-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.20s">
+  					<div class="whatsit">
+  						<h1>What is Lonely Gamer</h1>
+  						<h2>Discover other gamers who want to play the same game as you!</h2>
+  						<p>Here, you can find a lobby with the kind of gamers you'd want to play with, or you can just make your own and wait till your new bros show up!
+                It's a simple and quick experience designed to get you gaming the way you want to, as fast as possible.</p>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+      </div><!--/#whatsit-->
+
+  	<div id="whats-special" class="padding image-bg">
+  		<div class="overlay-bg"></div>
+  		<div class="container">
+  			<div class="text-center section-title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.10s">
+  				<img class="img-responsive" src="images/icons/t1.png" alt="" />
+  				<h1>What’s Special</h1>
+  			</div>
+  			<div class="special-features">
+  				<div class="row">
+  					<div class="col-sm-3">
+  						<div class="special-content text-right wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.3s">
+  							<h2>Quick Experience</h2>
+  							<p>Sectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+  						</div>
+  						<div class="special-content text-right wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  							<h2>Simple Process</h2>
+  							<p>Ut enim ad minim veniam, quis nosexercitation ullaboris nisi ut aliquip ex ea commodo.</p>
+  						</div>
+  					</div>
+  					<div class="col-sm-6">
+  						<div class="special-image wow slideInUp" data-wow-duration="0.5s" data-wow-delay="0.7s">
+  							<img class="img-responsive" src="images/mockup/special.png" alt="">
+  						</div>
+  					</div>
+  					<div class="col-sm-3">
+  						<div class="special-content text-left wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.3s">
+  							<h2>More Gaming</h2>
+  							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  						</div>
+  						<div class="special-content text-left wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  							<h2>More Fun</h2>
+  							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+  						</div>
+  					</div>
+
+  				</div>
+  			</div>
+  		</div>
+      </div><!--/#whats-special-->
+
+  	<div id="compatibility" class="padding">
+  		<div class="container">
+  			<div class="section-title text-center wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.1s">
+  				<img class="img-responsive" src="images/icons/t2.png" alt="" />
+  				<h1>Console Compatibility</h1>
+  			</div>
+  			<div class="col-sm-6 left-side">
+  				<div class="compatibility">
+  					<div class="os text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>Xbox One</h2>
+  						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  					<div class="os-image wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/xboxOne.png" alt="">
+  					</div>
+  				</div>
+  			</div>
+  			<div class="col-sm-6 right-side">
+  				<div class="compatibility">
+  					<div class="os-image wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/xbox360.png" alt="">
+  					</div>
+  					<div class="os text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>Xbox 360</h2>
+  						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  				</div>
+  			</div>
+        <div class="col-sm-6 left-side">
+  				<div class="compatibility">
+  					<div class="os text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>PC: Steam</h2>
+  						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  					<div class="os-image wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/pc.png" alt="">
+  					</div>
+  				</div>
+  			</div>
+  			<div class="col-sm-6 right-side">
+  				<div class="compatibility">
+  					<div class="os-image wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/pc2.png" alt="">
+  					</div>
+  					<div class="os text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>PC: Origin</h2>
+  						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  				</div>
+  			</div>
+        <div class="col-sm-6 left-side">
+  				<div class="compatibility">
+  					<div class="os text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>PS4</h2>
+  						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  					<div class="os-image wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/ps4.png" alt="">
+  					</div>
+  				</div>
+  			</div>
+  			<div class="col-sm-6 right-side">
+  				<div class="compatibility">
+  					<div class="os-image wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<img class="img-responsive" src="images/mockup/consoleThumbnails/ps3.png" alt="">
+  					</div>
+  					<div class="os text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
+  						<h2>PS3</h2>
+  						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+  						<a href="#">More Detail</a>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div><!--/#compatibility-->
+
+  	<div id="video-section" class="padding image-bg">
+  		<div class="overlay-bg"></div>
+  		<div class="container text-center">
+  			<div class="section-title wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.1s">
+  				<img class="img-responsive" src="images/icons/t3.png" alt="" />
+  				<h1>Description with video</h1>
+  			</div>
+  			<div class="video wow zoomIn" data-wow-duration="0.5s" data-wow-delay="0.3s">
+  				<a class="video-link" href="https://vimeo.com/124415606"><i class="fa fa-youtube-play"></i></a>
+  				<img class="img-responsive" src="images/mockup/video.png" alt="">
+  			</div>
+  		</div>
+  	</div><!--/#video-section-->
+
+  	<!-- <footer id="footer">
+  		<div class="overlay-bg"></div>
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-7">
+  					<p>© Copyright 2015 <a href="#">Nap App</a>.</p>
+  				</div>
+  				<div class="col-sm-5">
+  					<ul class="list-inline footer-menu text-right">
+  						<li><a href="#">English(us)</a></li>
+  						<li><a href="#">Privacy</a></li>
+  						<li><a href="#">Terms</a></li>
+  						<li><a href="#">Cookies</a></li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</footer> -->
+
+  </body>
+</template>
