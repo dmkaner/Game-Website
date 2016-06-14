@@ -1,5 +1,6 @@
 Games = new Mongo.Collection("games");
 CreateLobby = new Mongo.Collection("createlobby");
+SearchLobby = new Mongo.Collection("searchlobby");
 
 CreateLobby.allow({
   'insert': function (userId,doc) {
@@ -8,6 +9,12 @@ CreateLobby.allow({
 });
 
 Games.allow({
+  'insert': function (userId,doc) {
+    return true;
+  }
+});
+
+SearchLobby.allow({
   'insert': function (userId,doc) {
     return true;
   }
@@ -47,4 +54,12 @@ Meteor.publish("games", function(){
 
 Meteor.publish("createlobby", function(){
   return CreateLobby.find();
+});
+
+Meteor.publish("searchlobby", function(){
+  return SearchLobby.find();
+});
+
+SearchLobby.before.insert(function(userId, doc) {
+    SearchLobby.remove({profile:Meteor.userId()});
 });

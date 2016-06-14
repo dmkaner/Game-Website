@@ -2,6 +2,7 @@ import "./templates/home.html"
 
 Games = new Mongo.Collection("games");
 CreateLobby = new Mongo.Collection("createlobby");
+SearchLobby = new Mongo.Collection("searchlobby");
 
 CreateLobbySchema = new SimpleSchema({
   game: {
@@ -26,7 +27,7 @@ CreateLobbySchema = new SimpleSchema({
           {label: "Xbox 1", value: "Xbox 1"},
           {label: "PS4", value: "PS4"},
           {label: "PC: Steam", value: "PC: Steam"},
-          {label: "PC: Origin", value: "PC: Steam"}
+          {label: "PC: Origin", value: "PC: Origin"}
         ];
       }
     }
@@ -75,7 +76,81 @@ CreateLobbySchema = new SimpleSchema({
   }
 });
 
+SearchLobbySchema = new SimpleSchema({
+  game: {
+    type: String,
+    label: "Game",
+    autoValue: function(){
+      return elementText
+    },
+    autoform: {
+      type: "hidden"
+    }
+  },
+  console: {
+    type: String,
+    label: "Console",
+    autoform: {
+      type: "select",
+      options: function () {
+        return [
+          {label: "Xbox 360", value: "Xbox 360"},
+          {label: "PS3", value: "PS3"},
+          {label: "Xbox 1", value: "Xbox 1"},
+          {label: "PS4", value: "PS4"},
+          {label: "PC: Steam", value: "PC: Steam"},
+          {label: "PC: Origin", value: "PC: Origin"}
+        ];
+      }
+    }
+  },
+  players: {
+    type: String,
+    label: "Players",
+    autoform: {
+      type: "select",
+      options: function () {
+        return [
+          {label: "Two Player", value: 2},
+          {label: "Three Player", value: 3},
+          {label: "Four Player", value: 4},
+        ];
+      }
+    }
+  },
+  mic: {
+    type: String,
+    label: "Mic",
+    autoform: {
+      afFieldInput: {
+        type: "boolean-select"
+      }
+    }
+  },
+  profile: {
+    type: String,
+    label: "Profile",
+    autoValue: function(){
+      return this.userId
+    },
+    autoform: {
+      type: "hidden"
+    }
+  },
+  createdAt: {
+    type: Date,
+    label: "Create At",
+    autoValue: function() {
+      return new Date()
+    },
+    autoform: {
+      type: "hidden"
+    }
+  }
+});
+
 CreateLobby.attachSchema( CreateLobbySchema );
+SearchLobby.attachSchema( SearchLobbySchema );
 
 GamesIndex = new EasySearch.Index({
   engine: new EasySearch.MongoDB({
@@ -107,6 +182,7 @@ GamesIndex = new EasySearch.Index({
 
 Meteor.subscribe("games");
 Meteor.subscribe("createlobby");
+Meteor.subscribe("searchlobby");
 
 Template.leaderboard.helpers({
   inputAttributes: function () {
@@ -168,8 +244,29 @@ Template.LoginModal.events({
   }
 });
 
+
 Template.joinLobby.helpers({
   lobbyTabs: function(){
-    return CreateLobby.find();
+
+    var game1 = SearchLobby.findOne(
+      {profile: Meteor.userId()},
+      {game: 1,_id: 0}
+    ).game;
+
+    var console1 = SearchLobby.findOne(
+      {profile: Meteor.userId()},
+      {conosle: 1,_id: 0}
+    ).console;
+
+    var players1 = SearchLobby.findOne(
+      {profile: Meteor.userId()},
+      {players: 1,_id: 0}
+    ).players;
+
+    var mic1 = SearchLobby.findOne(
+      {profile: Meteor.userId()},
+      {mic: 1,_id: 0}
+    ).mic;
+    return CreateLobby.find({game: game1, console: console1, players: players1, mic: mic1});
   }
 });

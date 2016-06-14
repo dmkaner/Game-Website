@@ -81,6 +81,12 @@
         BlazeLayout.render('createLobby');
         return elementText;
       }
+      function getElementTextJoin(elementID){
+        elementText = document.getElementById(elementID).innerHTML;
+        console.log(elementText);
+        BlazeLayout.render('lobbyQuery');
+        return elementText;
+      }
     </script>
 
     <script>

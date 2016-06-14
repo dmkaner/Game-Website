@@ -1,0 +1,14 @@
+<template name="lobbyQuery">
+  <h1>Create Lobby</h1>
+  
+  {{#autoForm collection="SearchLobby" id="insertSearchLobbyForm" type="insert"}}
+    <fieldset>
+      {{> afQuickField name='game'}}
+      {{> afQuickField name='console'}}
+      {{> afQuickField name='players'}}
+      {{> afQuickField name='mic'}}
+      {{> afQuickField name='profile'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+</template>

@@ -33,5 +33,6 @@ accounts-password
 useraccounts:unstyled
 raix:handlebar-helpers
 fourseven:scss
+matb33:collection-hooks
 
 # Test Stuff

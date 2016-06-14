@@ -21,7 +21,18 @@
   	</section>
 
     <h1>Create Lobby</h1>
-    {{> quickForm collection="CreateLobby" id="insertLobbyForm" type="insert"}}
+
+    {{#autoForm collection="CreateLobby" id="insertLobbyForm" type="insert"}}
+      <fieldset>
+        {{> afQuickField name='game'}}
+        {{> afQuickField name='console'}}
+        {{> afQuickField name='players'}}
+        {{> afQuickField name='mic'}}
+        {{> afQuickField name='note' rows=2}}
+        {{> afQuickField name='profile'}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
 
     <script>
       $(function () {
